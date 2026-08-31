@@ -40,12 +40,7 @@ def predict_credit_card_approval(input_data: CreditCardInput):
     result = predict(input_data=input_data)
     return {
         "prediction": result["prediction"],
-        "probability": result["probability"],
-        "diagnosis": (
-            "Credit Card Approved"
-            if result["prediction"] == 0
-            else "Credit Card Rejected"
-        )
+        "probability": result["probability"]
     }
 
 # uvicorn backend.main:app --reload
