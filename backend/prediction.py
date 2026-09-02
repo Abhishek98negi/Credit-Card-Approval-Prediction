@@ -1,22 +1,20 @@
 import pandas as pd
 import joblib
 model = joblib.load("D:\\My Learning\\ML projects\\Credit-Card-Approval-Prediction\\backend\\xgb_best.joblib")
-def predict(input_data: dict):
 
+def predict(input_data: dict):
     df = pd.DataFrame([input_data])
 
     # get predicted class
     prediction = int(model.predict(df)[0])
-    # get prediction probability
-    probability = float(model.predict_proba(df)[0][1])
-
+    # get prediction probability of credit card approval
+    probability = float(model.predict_proba(df)[0][0])
 
     return {
         "prediction": prediction,
         "probability": probability
     }
 
-										
 					
 # example usage
 # sample_input = {

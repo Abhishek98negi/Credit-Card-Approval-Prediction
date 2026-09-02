@@ -17,27 +17,80 @@ st.subheader("Enter Customer's details and click **Predict**")
 
 col1, col2, col3 = st.columns(3)
 
+# 0   GENDER            1386 non-null   object 
+#  1   Car_Owner         1386 non-null   object 
+#  2   Propert_Owner     1386 non-null   object 
+#  3   Annual_income     1386 non-null   float64
+
 with col1:
-    gender = st.selectbox("Gender (1 = Male, 0 = Female)", [0, 1])
-    car_owner = st.selectbox("Car Owner (1 = Yes, 0 = No)", [0, 1])
-    property_owner = st.selectbox("Property Owner (1 = Yes, 0 = No)", [0, 1])
-    annual_income = st.number_input("Annual Income", 0, 1000000, 50000)
-    work_phone = st.selectbox("Work Phone (1 = Yes, 0 = No)", [0, 1])
+    gender = st.selectbox(
+        "Gender", 
+        options=["M", "F"], 
+        format_func=lambda x: "Male" if x == "M" else "Female"
+    )
+    car_owner = st.selectbox(
+        "Car Owner", 
+        options=["Y", "N"], 
+        format_func=lambda x: "Yes" if x == "Y" else "No"
+    )
+    property_owner = st.selectbox(
+        "Property Owner", 
+        options=["Y", "N"], 
+        format_func=lambda x: "Yes" if x == "Y" else "No"
+    )
+    annual_income = st.number_input(
+        "Annual Income",
+        min_value=0,
+        max_value=1000000000,
+        value=None,
+        placeholder="Enter annual income"
+    )
+    education = st.selectbox("Education Level", ["Higher education", "Secondary / secondary special", "Incomplete higher", "Lower secondary", "Academic degree"])
+
+#  4   Type_Income       1386 non-null   object 
+#  5   EDUCATION         1386 non-null   object 
+#  6   Marital_status    1386 non-null   object 
+#  7   Housing_type      1386 non-null   object 
+#  8   Work_Phone        1386 non-null   int64  
+#  9   Phone             1386 non-null   int64  
 
 with col2:
     type_income = st.selectbox("Type of Income", ["Working", "Commercial associate", "State servant", "Pensioner", "Unemployed", "Student"])
-    education = st.selectbox("Education Level", ["Higher education", "Secondary education", "Incomplete higher", "Lower secondary", "Academic degree"])
-    marital_status = st.selectbox("Marital Status (1 = Married, 0 = Not Married)", [0, 1])
-    housing_type = st.selectbox("Housing Type", ["Rented", "Owned", "With Parents"])
-    age = st.number_input("Age", 0, 120, 51)
-    
+    marital_status = st.selectbox("Marital Status", ["Married", "Single / not married", "Civil marriage", "Separated", "Widow"])
+
+    housing_type = st.selectbox("Housing Type", ["House / apartment", "With parents", "Municipal apartment", "Rented apartment", "Office apartment", "Co-op apartment"])
+    work_phone= st.selectbox(
+        "work phone", 
+        options=[0, 1], 
+        format_func=lambda x: "Yes" if x == 1 else "No"
+    )
+    phone= st.selectbox(
+        "landline phone", 
+        options=[0, 1], 
+        format_func=lambda x: "Yes" if x == 1 else "No"
+    )
+
+#  10  EMAIL_ID          1386 non-null   int64  
+#  11  Type_Occupation   1386 non-null   object 
+#  12  Family_Members    1386 non-null   int64  
+#  13  label             1386 non-null   int64  
+#  14  Age               1386 non-null   int64  
+#  15  Employment_years  1386 non-null   float64 
 
 with col3:
-    phone = st.selectbox("Phone (1 = Yes, 0 = No)", [0, 1])
-    email_id = st.selectbox("Email ID (1 = Yes, 0 = No)", [0, 1])
-    type_occupation = st.selectbox("Type of Occupation", ["Working", "Commercial associate", "State servant", "Pensioner", "Unemployed", "Student"])
+    email_id= st.selectbox(
+            "email id", 
+            options=[0, 1], 
+            format_func=lambda x: "Yes" if x == 1 else "No"
+        )
+    type_occupation = st.selectbox("Type of Occupation", ["Others", "Laborers", "Core staff", "Accountants", "Managers", "Drivers",
+        "Sales staff", "High skill tech staff", "Medicine staff", "Cooking staff", "Security staff", "Cleaning staff", 
+        "Private service staff", "Low-skill Laborers", "Waiters/barmen staff", "Secretaries", "Realty agents", "HR staff", "IT staff"])
     family_members = st.number_input("Number of Family Members", 0, 20, 2)
-    employment_years = st.number_input("Years of Employment", 0.0, 50.0, 0.0)
+    age = st.number_input("Age", 0, 120, value=None,
+            placeholder="Enter Your age")
+    employment_years = st.number_input("Years of Employment", 0.0, 50.0, value=None,
+            placeholder="Enter years of employment")
 
 
 
