@@ -3,7 +3,9 @@ import requests
 import streamlit as st
 
 
-API_URL = "http://127.0.0.1:8000/predict-credit-card-approval"
+# API_URL = "http://127.0.0.1:8000/predict-credit-card-approval"
+# Defaults to localhost for local testing, uses Render URL in production
+BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 st.set_page_config(
     page_title="Credit Card approval prediction",
@@ -114,7 +116,7 @@ if st.button("🔍 Predict"):
         "Employment_years": employment_years
     }
 
-    response = requests.post(API_URL, json=input_data)
+    response = requests.post(f"{BACKEND_URL}/predict-credit-card-approval", json=input_data)
 
     if response.status_code != 200:
         st.error("Something went wrong. Try again later...")

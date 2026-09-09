@@ -3,10 +3,19 @@ from pydantic import BaseModel
 
 from backend.prediction import predict
 
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="Credit card Approval prediction",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Change this to your frontend URL later for security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # input schema matching training features
