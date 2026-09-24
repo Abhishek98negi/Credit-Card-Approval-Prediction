@@ -11,7 +11,6 @@ model_path = os.path.join(BASE_DIR, "xgb_best.joblib")
 # 3. Load the model using the dynamic path
 model = joblib.load(model_path)
 
-# model = joblib.load("D:\\My Learning\\ML projects\\Credit-Card-Approval-Prediction\\backend\\xgb_best.joblib")
 
 def predict(input_data: dict):
     df = pd.DataFrame([input_data])

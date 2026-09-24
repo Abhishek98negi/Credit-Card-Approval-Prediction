@@ -34,7 +34,7 @@ class CreditCardInput(BaseModel):
     Type_Occupation:object 
     Family_Members:int  
     Age:int  
-    Employment_years:float
+    Employment_years:int
 
 
 @app.get("/predict")
